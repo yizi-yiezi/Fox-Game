@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://b10t0ydiiislo"]
+
+[ext_resource type="Texture2D" uid="uid://bbywkhgwkuyoh" path="res://AssetBundle/Sprites/ForestBackground.png" id="1_uyc30"]
+[ext_resource type="PackedScene" uid="uid://bsekiu7snhqhf" path="res://Scenes/Player.tscn" id="2_7nh4w"]
+[ext_resource type="PackedScene" uid="uid://dwt8k58pqf07e" path="res://Scenes/Slime.tscn" id="3_b0q3m"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d5vuj"]
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Background1" type="Sprite2D" parent="."]
+position = Vector2(-119, 0)
+texture = ExtResource("1_uyc30")
+metadata/_edit_lock_ = true
+
+[node name="Background2" type="Sprite2D" parent="."]
+position = Vector2(120, 0)
+texture = ExtResource("1_uyc30")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.395, 2.395)
+metadata/_edit_lock_ = true
+
+[node name="Boundary" type="Node2D" parent="."]
+
+[node name="BorderDown" type="StaticBody2D" parent="Boundary"]
+position = Vector2(0, 135)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/BorderDown"]
+shape = SubResource("WorldBoundaryShape2D_d5vuj")
+
+[node name="BorderUp" type="StaticBody2D" parent="Boundary"]
+position = Vector2(0, -133)
+rotation = -3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/BorderUp"]
+shape = SubResource("WorldBoundaryShape2D_d5vuj")
+
+[node name="BorderLeft" type="StaticBody2D" parent="Boundary"]
+position = Vector2(-240, -1)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/BorderLeft"]
+shape = SubResource("WorldBoundaryShape2D_d5vuj")
+
+[node name="BorderRight" type="StaticBody2D" parent="Boundary"]
+position = Vector2(239, -1)
+rotation = -1.57078
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/BorderRight"]
+shape = SubResource("WorldBoundaryShape2D_d5vuj")
+
+[node name="Slime" parent="." instance=ExtResource("3_b0q3m")]
+position = Vector2(152, 77)
+
+[node name="Player" parent="." instance=ExtResource("2_7nh4w")]
