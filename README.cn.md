@@ -7,6 +7,7 @@
 
 - [原始教程链接](https://merxon22.github.io/GodotArchive/zh/posts/beginner_2d/)
 - 本项目基于初学者 2D 教程，并进行了**模块化设计与功能拓展**。
+- [Play!](https://yizi-yiezi.itch.io/fox-game)
 
 ---
 
@@ -40,6 +41,9 @@
 ### 5. 🖼️ UI 独立为子场景
 - 所有用户界面元素（得分显示、生命值、游戏结束提示）被放置在一个独立的 **UI 场景**（`CanvasLayer`）中。
 - UI 的更新通过接收来自玩家或 GameManager 的 signal 实现。
+
+### 6. 全屏显示
+- 游戏运行中可以按下 F11 在窗口模式与全屏模式之间切换。
 
 ---
 

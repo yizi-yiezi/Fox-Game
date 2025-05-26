@@ -6,6 +6,7 @@ A pixel-style 2D action game made with **Godot Engine**.
 
 - [Tutorial Source](https://merxon22.github.io/GodotArchive/zh/posts/beginner_2d/)
 - Based on the beginner 2D game tutorial but **extended** with modular design and new gameplay mechanics.
+- [Play on Browser](https://yizi-yiezi.itch.io/fox-game)
 
 ---
 
@@ -38,6 +39,9 @@ This project expands on the original tutorial in the following key aspects:
 ### 5. 🖼️ UI as a Separate Scene
 - All user interface elements (score display, health, game-over label) are placed in a **dedicated UI scene** (`CanvasLayer`).
 - UI updates are handled via signals from the player or GameManager to maintain separation of concerns.
+
+### 6. Fullscreen
+- You can press `F11` to toggle between windowed and fullscreen mode during gameplay.
 
 ---
 

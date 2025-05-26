@@ -7,6 +7,7 @@
 
 - [原始教學來源](https://merxon22.github.io/GodotArchive/zh/posts/beginner_2d/)
 - 本專案以入門教學為基礎，並透過模組化設計與新增機制進行了**功能擴展與重構**。
+- [Play!](https://yizi-yiezi.itch.io/fox-game)
 
 ---
 
@@ -40,6 +41,9 @@
 ### 5. 🖼️ UI 獨立為專屬場景
 - 所有 UI 元素（分數、血條、Game Over 標籤）皆獨立設計在 **專屬 UI 場景**（`CanvasLayer`）中。
 - UI 的更新透過 signal 從玩家或 GameManager 接收事件，強化模組分離。
+
+### 6. 全螢幕切換
+- 遊戲中按下 F11 可在視窗模式與全螢幕模式間切換。
 
 ---
 
