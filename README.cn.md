@@ -1,6 +1,6 @@
+# 🦊 Fox Game
 [🇺🇸 English](README.md) | [🇨🇳 中文](README.cn.md) | [tc 繁中](README.tc.md)
 
-# 🦊 Fox Game
 ![game_overview](./Screenshots/GameOverview.png)
 
 一款使用 **Godot 引擎** 制作的像素风格 2D 动作游戏。

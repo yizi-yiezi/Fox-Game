@@ -1,6 +1,6 @@
+# 🦊 Fox Game
 [🇺🇸 English](README.md) | [🇨🇳 中文](README.cn.md) | [tc 繁中](README.tc.md)
 
-# Fox Game
 ![game_overview](./Screenshots/GameOverview.png)
 A pixel-style 2D action game made with **Godot Engine**.
 
