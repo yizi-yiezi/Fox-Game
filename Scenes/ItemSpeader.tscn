@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://sqsit2lusrb2"]
+
+[ext_resource type="Script" path="res://Scripts/ItemSpeader.gd" id="1_bxa61"]
+[ext_resource type="Texture2D" uid="uid://dgqp55vxnlbdb" path="res://AssetBundle/Sprites/Speader.png" id="2_vyu74"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f77hg"]
+atlas = ExtResource("2_vyu74")
+region = Rect2(0, 256, 307, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luxxk"]
+atlas = ExtResource("2_vyu74")
+region = Rect2(307, 256, 307, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asssi"]
+atlas = ExtResource("2_vyu74")
+region = Rect2(614, 256, 307, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v4ko"]
+atlas = ExtResource("2_vyu74")
+region = Rect2(921, 256, 307, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ybqy"]
+atlas = ExtResource("2_vyu74")
+region = Rect2(1228, 256, 307, 384)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjbha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f77hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luxxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asssi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v4ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ybqy")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxgb5"]
+size = Vector2(12, 12.5)
+
+[node name="Item" type="Area2D" node_paths=PackedStringArray("auto_recycle_timer") groups=["ItemSpeader"]]
+script = ExtResource("1_bxa61")
+auto_recycle_timer = NodePath("AutoRecycleTimer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -3)
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_qjbha")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.30268
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wxgb5")
+
+[node name="AutoRecycleTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="AutoRecycleTimer" to="." method="_on_auto_recycle_timer_timeout"]

@@ -22,7 +22,7 @@ speader_scene = ExtResource("5_qicg3")
 spawn_timer = NodePath("Timer")
 player = NodePath("Player")
 ui = NodePath("UI")
-rate_rare_enemy = 0.2
+rate_rare_enemy = 0.05
 
 [node name="Background1" type="Sprite2D" parent="."]
 position = Vector2(-119, 0)
@@ -73,7 +73,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_7nh4w")]
 position = Vector2(-185, 97)
-player_health = 15
+player_health = 1000
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

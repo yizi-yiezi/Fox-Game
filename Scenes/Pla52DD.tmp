@@ -159,10 +159,10 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animator", "fire_timer")]
 script = ExtResource("1_uuin7")
+v_factor = 100
 animator = NodePath("AnimatedSprite2D")
-fire_timer = NodePath("FireTimer")
 bullet_scene = ExtResource("2_fhp23")
-move_speed = 100
+fire_timer = NodePath("FireTimer")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_kb3fp")

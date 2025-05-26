@@ -1,11 +1,14 @@
 extends Area2D
 
-@export var slime_speed: float = 0
+@export var enemy_speed: float = 0
 @export var animator: AnimatedSprite2D
-@export var damage: int = 1
-@export var health: int = 1
+@export var damage: int = 3
+@export var health: int = 3
+@export var animate_timer: Timer
 
 var is_death: bool = false
+var is_animating: bool = false
+var tmp_speed: float = 0
 
 signal hit_by_bullet(bullet_node: Node)
 signal kill_by_player(enemy_node: Node)
@@ -15,16 +18,25 @@ signal hit_charactor(value: int)
 func _physics_process(delta: float) -> void:
 	if is_death:
 		return
-		
-	position += Vector2(self.slime_speed, 0) * delta
+	position += Vector2(enemy_speed, 0) * delta
 	
+	if not is_animating:
+		animator.play("Run")
+		
 	if position.x < -264:
 		queue_free()
 
 # Collide player
 func _on_body_entered(body: Node2D) -> void:
+	if is_animating:
+		return
 	if body is CharacterBody2D and not is_death:
-		hit_charactor.emit(self.damage)
+		animator.play("Slash")
+		is_animating = true
+		animate_timer.start()
+		tmp_speed = enemy_speed
+		enemy_speed = 0
+		hit_charactor.emit(damage)
 
 # Killed by player
 func _on_area_entered(area: Area2D) -> void:
@@ -39,3 +51,8 @@ func _on_area_entered(area: Area2D) -> void:
 			kill_by_player.emit(self)
 			await get_tree().create_timer(0.6).timeout
 			self.queue_free()
+
+
+func _on_animate_timer_timeout() -> void:
+	is_animating = false
+	enemy_speed = tmp_speed

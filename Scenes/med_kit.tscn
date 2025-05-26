@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://cq1wtnnukqix8"]
+
+[ext_resource type="Script" path="res://Scripts/ItemMedkit.gd" id="1_5a8fi"]
+[ext_resource type="Texture2D" uid="uid://4nkhktiqi5kk" path="res://AssetBundle/Sprites/medkit_sheet.png" id="1_flbcy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrkyf"]
+atlas = ExtResource("1_flbcy")
+region = Rect2(0, 256, 512, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrsco"]
+atlas = ExtResource("1_flbcy")
+region = Rect2(512, 256, 512, 384)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjbha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrkyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrsco")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wxgb5"]
+size = Vector2(24, 17)
+
+[node name="MedKit" type="Area2D" node_paths=PackedStringArray("auto_recycle_timer") groups=["ItemMedkit"]]
+script = ExtResource("1_5a8fi")
+auto_recycle_timer = NodePath("AutoRecycleTimer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_qjbha")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 1
+frame_progress = 0.728857
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2.5)
+shape = SubResource("RectangleShape2D_wxgb5")
+
+[node name="AutoRecycleTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="AutoRecycleTimer" to="." method="_on_auto_recycle_timer_timeout"]

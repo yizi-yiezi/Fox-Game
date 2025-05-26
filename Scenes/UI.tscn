@@ -9,9 +9,22 @@ offset_left = 37.0
 offset_top = 28.0
 offset_right = 191.0
 offset_bottom = 77.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_ha6p2")
 theme_override_font_sizes/font_size = 48
 text = "Score: 0"
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = 37.0
+offset_top = 89.0
+offset_right = 208.0
+offset_bottom = 138.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_ha6p2")
+theme_override_font_sizes/font_size = 48
+text = "Health: 0"
 
 [node name="GameOverLabel" type="Label" parent="."]
 anchors_preset = 8
